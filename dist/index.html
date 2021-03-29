@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src='doT.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js'></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
+	<link rel="stylesheet" href="stories.css">
+	<link type="image/x-icon" rel="shortcut icon" href="assets/images/favicon-m-dark.png">
+	<script src='stories.js'></script>
+	<title>Stories</title>
+</head>
+<body class='light-theme'>
+	<script id='leaders' type='text/template'>
+		<div class='leaders'>
+			<header class='g-header'>
+				<h1 class="g-title">{{=it.title}}</h1>
+				<h2 class="g-subtitle">{{=it.subtitle}}</h2>
+			</header>
+			<div class="people-positions">
+				{{~ it.users :value:i}}
+					<div class='people-position__container people-position__container_number_{{=i + 1}}'>
+							{{? i == 0 }}
+								<span class='people-card-item__emoji'>
+									{{=it.emoji}}
+								</span>
+							{{?}}
+						{{? i < 5}}
+							{{#def.peopleCard}}
+							<div class="people-position">{{=i + 1}}</div>
+						{{?}}
+					</div>
+				{{~}}
+			</div>
+		</div>
+	</script>
+	<script id='vote' type='text/template'>
+		<div class="vote">
+			<header class="g-header">
+				<h1 class="g-title">{{=it.title}}</h1>
+				<h2 class="g-subtitle">{{=it.subtitle}}</h2>
+			</header>
+			<div class="voting">
+				{{~ it.users :value:i}}
+					{{? i === 2}}
+						<div class="switch-button switch-button__direction-up"></div>
+					{{?}}
+						{{? i < 8}}
+							{{#def.peopleCard}}
+						{{?}}
+					{{? i === 5}}
+						<div class="switch-button switch-button__direction-down"></div>
+					{{?}}
+				{{~}}
+			</div>
+		</div>
+	</script>
+	<script id="chart" type='text/template'>
+		<div class="chart">
+			<header class="g-header">
+				<h1 class="g-title">{{=it.title}}</h1>
+				<h2 class="g-subtitle">{{=it.subtitle}}</h2>
+			</header>
+			<div class="chart-container">
+				<div class='statistic-container'>
+					{{~ it.values :value:i}}
+						{{? value.title <= 215}}
+							<div class="statistic{{? value.calculatedPercent === 100}} statistic-leader{{?}}" style='height:{{=value.calculatedPercent}}%;'>
+								<span class="statistic__points">
+									{{? value.value > 0}}
+										{{=value.value}}
+									{{?}}
+								</span>
+								<div class="statistic__column"></div>
+								<span class="statistic__year">{{=value.title}}</span>
+							</div>
+						{{?}}
+					{{~}}
+				</div>
+				<div class="chart__people-card-container">
+					{{~ it.users :value:i}}
+						{{? i <= 1}}
+							{{#def.peopleCard}}
+							{{? i === 0}}
+								<div class="separator"></div>
+							{{?}}
+						{{?}}
+					{{~}}
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="activity" type="text/template">
+		<div class="activity">
+			<header class="g-header">
+				<h1 class="g-title">{{=it.title}}</h1>
+				<h2 class="g-subtitle">{{=it.subtitle}}</h2>
+			</header>
+			<div class="heat-map heat-map__orientation_vertical">
+				<div class="heat-map__item-container heat-map__monday">
+					{{~ it.data.one.mon :value:i}}
+						<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+					{{~}}
+				</div>
+				<div class="heat-map__item-container heat-map__tuesday">
+					{{~ it.data.one.tue :value:i}}
+						<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+					{{~}}
+				</div>
+				<div class="heat-map__item-container heat-map__wednesday">
+					{{~ it.data.one.wed :value:i}}
+						<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+					{{~}}
+				</div>
+				<div class="heat-map__item-container heat-map__thursday">
+					{{~ it.data.one.thu :value:i}}
+						<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+					{{~}}
+				</div>
+				<div class="heat-map__item-container heat-map__friday">
+					{{~ it.data.one.fri :value:i}}
+						<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+					{{~}}
+				</div>
+				<div class="heat-map__item-container heat-map__saturday">
+					{{~ it.data.one.sat :value:i}}
+						<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+					{{~}}
+				</div>
+				<div class="heat-map__item-container heat-map__sunday">
+					{{~ it.data.one.sun :value:i}}
+						<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+					{{~}}
+				</div>
+			</div>
+			<!-- горизонтальная ориентация-->
+			<div class="heat-map heat-map__orientation_horizontal">
+				<div class="heat-map__item-container heat-map__monday">
+					{{~ it.data.two.mon :value:i}}
+						<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+					{{~}}
+				</div>
+				<div class="heat-map__item-container heat-map__tuesday">
+					{{~ it.data.two.tue :value:i}}
+						<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+					{{~}}
+				</div>
+				<div class="heat-map__item-container heat-map__wednesday">
+					{{~ it.data.two.wed :value:i}}
+						<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+					{{~}}
+				</div>
+				<div class="heat-map__item-container heat-map__thursday">
+					{{~ it.data.two.thu :value:i}}
+						<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+					{{~}}
+				</div>
+				<div class="heat-map__item-container heat-map__friday">
+					{{~ it.data.two.fri :value:i}}
+						<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+					{{~}}
+				</div>
+				<div class="heat-map__item-container heat-map__saturday">
+					{{~ it.data.two.sat :value:i}}
+						<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+					{{~}}
+				</div>
+				<div class="heat-map__item-container heat-map__sunday">
+					{{~ it.data.two.sun :value:i}}
+						<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+					{{~}}
+				</div>
+			</div>
+			<div class="legends">
+				<div class="legends__item">
+					<div class="legends__item_size legends__item_size_segment">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<span class="legends__item_hours legends__item_hours_segment"></span>
+				</div>
+				<div class="legends__item">
+					<div class="legends__item_size legends__item_size_min"></div>
+					<span class="legends__item_hours">0</span>
+				</div>
+				<div class="legends__item">
+					<div class="legends__item_size legends__item_size_mid"></div>
+					<span class="legends__item_hours">1 - 2</span>
+				</div>
+				<div class="legends__item">
+					<div class="legends__item_size legends__item_size_max"></div>
+					<span class="legends__item_hours">3 - 4</span>
+				</div>
+				<div class="legends__item">
+					<div class="legends__item_size legends__item_size_extra"></div>
+					<span class="legends__item_hours">5 - 6</span>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="diagram" type="text/template">
+		<div class="diagram">
+			<header class="g-header">
+				<h1 class="g-title">{{=it.title}}</h1>
+				<h2 class="g-subtitle">{{=it.subtitle}}</h2>
+			</header>
+			<div class="diagram-content">
+				<div class="diagram-item diagram-container">
+					<canvas id="chart" width="328" height="328"></canvas>
+				</div>
+				<div class="diagram-item legends-diagram">
+					{{~it.categories :value:i}}
+						<div class="legends-diagram__item">
+							<div class="legends-diagram-size">
+								<div class="legends-diagram__color legends-diagram__color_{{=i + 1}}"></div>
+								<div class="legends-diagram__strings">{{=value.title}}</div>
+							</div>
+							<div class="legends-diagram__commits">
+								<span class="legends-diagram__commits_points">+{{=value.differenceText}}</span>
+								<span class="legends-diagram__commits_all">{{=value.valueText}}</span>
+							</div>
+						</div>
+					{{~}}
+				</div>
+			</div>
+		</div>
+	</script>
+	<script id="people-card-template" type="text/template">
+			<div class='people-card people-card{{=i + 1}}'>
+				<img class='people-card-item__avatar' src='assets/images/{{=value.avatar}}'>
+				<div class="people-card-info">
+					<title class='people-card-item__name'>{{=value.name}}</title>
+					<span class='people-card-item__points'>{{=value.valueText}}</span>
+				</div>
+			</div>
+	</script>
+	
+</body>
+</html>

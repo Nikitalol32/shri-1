@@ -1,0 +1,23 @@
+<script id='leaders' type='text/template'>
+	<div class='leaders'>
+		<header class='g-header'>
+			<h1 class="g-title">{{=it.title}}</h1>
+			<h2 class="g-subtitle">{{=it.subtitle}}</h2>
+		</header>
+		<div class="people-positions">
+			{{~ it.users :value:i}}
+				<div class='people-position__container people-position__container_number_{{=i + 1}}'>
+						{{? i == 0 }}
+							<span class='people-card-item__emoji'>
+								{{=it.emoji}}
+							</span>
+						{{?}}
+					{{? i < 5}}
+						{{#def.peopleCard}}
+						<div class="people-position">{{=i + 1}}</div>
+					{{?}}
+				</div>
+			{{~}}
+		</div>
+	</div>
+</script>

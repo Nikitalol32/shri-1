@@ -1,0 +1,73 @@
+.diagram
+	display flex
+	flex-direction column
+	align-items center
+	color var(--main-font-color)
+
+.diagram-content
+	display flex
+	flex-direction row
+	max-width 584px
+	width 100%
+	
+	+smallScreen()
+		flex-direction column
+		width 90%
+
+.diagram-container
+	flex 1
+
+.diagram-item
+	display flex
+
+.legends-diagram
+	flex-direction column
+	flex 2
+
+	&__item
+		display flex
+		flex-direction row
+		align-items center
+		justify-content space-between
+		padding 16px 0
+		border-bottom 2px solid var(--separator-color)
+		font-size 16px
+
+	&-size
+		display flex
+		flex-direction row
+		align-items center
+
+	&__color
+		width 16px
+		height @width
+		background-repeat no-repeat
+		background-size contain
+		border-radius 50%
+		margin-right 10px
+
+	&__color_1
+		background-image var(--color-extra-stats)
+		box-shadow var(--box-shadow-extra-stats)
+
+	&__color_2
+		background-image var(--color-max-stats)
+		box-shadow var(--box-shadow-max-stats)
+
+	&__color_3
+		background-image var(--color-mid-stats)
+		box-shadow var(--box-shadow-mid-stats)
+
+	&__color_4
+		background-image var(--color-min-stats)
+		box-shadow var(--box-shadow-min-stats)
+
+	&__item:last-child
+		border none
+
+	&__commits
+		font-weight 500
+		color var(--secondary-font-color)
+
+	&__commits_points
+		margin-right 16px

@@ -1,0 +1,35 @@
+<script id="chart" type='text/template'>
+	<div class="chart">
+		<header class="g-header">
+			<h1 class="g-title">{{=it.title}}</h1>
+			<h2 class="g-subtitle">{{=it.subtitle}}</h2>
+		</header>
+		<div class="chart-container">
+			<div class='statistic-container'>
+				{{~ it.values :value:i}}
+					{{? value.title <= 215}}
+						<div class="statistic{{? value.calculatedPercent === 100}} statistic-leader{{?}}" style='height:{{=value.calculatedPercent}}%;'>
+							<span class="statistic__points">
+								{{? value.value > 0}}
+									{{=value.value}}
+								{{?}}
+							</span>
+							<div class="statistic__column"></div>
+							<span class="statistic__year">{{=value.title}}</span>
+						</div>
+					{{?}}
+				{{~}}
+			</div>
+			<div class="chart__people-card-container">
+				{{~ it.users :value:i}}
+					{{? i <= 1}}
+						{{#def.peopleCard}}
+						{{? i === 0}}
+							<div class="separator"></div>
+						{{?}}
+					{{?}}
+				{{~}}
+			</div>
+		</div>
+	</div>
+</script>

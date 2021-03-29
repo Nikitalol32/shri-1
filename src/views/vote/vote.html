@@ -1,0 +1,21 @@
+<script id='vote' type='text/template'>
+	<div class="vote">
+		<header class="g-header">
+			<h1 class="g-title">{{=it.title}}</h1>
+			<h2 class="g-subtitle">{{=it.subtitle}}</h2>
+		</header>
+		<div class="voting">
+			{{~ it.users :value:i}}
+				{{? i === 2}}
+					<div class="switch-button switch-button__direction-up"></div>
+				{{?}}
+					{{? i < 8}}
+						{{#def.peopleCard}}
+					{{?}}
+				{{? i === 5}}
+					<div class="switch-button switch-button__direction-down"></div>
+				{{?}}
+			{{~}}
+		</div>
+	</div>
+</script>

@@ -1,0 +1,27 @@
+<script id="diagram" type="text/template">
+	<div class="diagram">
+		<header class="g-header">
+			<h1 class="g-title">{{=it.title}}</h1>
+			<h2 class="g-subtitle">{{=it.subtitle}}</h2>
+		</header>
+		<div class="diagram-content">
+			<div class="diagram-item diagram-container">
+				<canvas id="chart" width="328" height="328"></canvas>
+			</div>
+			<div class="diagram-item legends-diagram">
+				{{~it.categories :value:i}}
+					<div class="legends-diagram__item">
+						<div class="legends-diagram-size">
+							<div class="legends-diagram__color legends-diagram__color_{{=i + 1}}"></div>
+							<div class="legends-diagram__strings">{{=value.title}}</div>
+						</div>
+						<div class="legends-diagram__commits">
+							<span class="legends-diagram__commits_points">+{{=value.differenceText}}</span>
+							<span class="legends-diagram__commits_all">{{=value.valueText}}</span>
+						</div>
+					</div>
+				{{~}}
+			</div>
+		</div>
+	</div>
+</script>

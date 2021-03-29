@@ -1,0 +1,16 @@
+headline()
+	font-size 30px
+	font-weight 700
+	line-height 32px
+
+smallScreen()
+	@media screen and (max-width $breakPoint1)
+		{block}
+
+verySmallScreen()
+	@media screen and (max-width $breakPoint2.width)
+		{block}
+
+verySmallHeight()
+	@media screen and (max-height $breakPoint2.height)
+		{block}

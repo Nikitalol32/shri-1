@@ -1,0 +1,138 @@
+.activity
+	display flex
+	flex-direction column
+	align-items center
+
+.heat-map__orientation_horizontal
+	display flex
+	flex-direction column
+	position relative
+	margin-top 60px
+
+	+smallScreen()
+		display none
+
+.heat-map__orientation_horizontal .heat-map__item-container
+	flex-direction row
+
+.heat-map__orientation_horizontal .heat-map__item-container:nth-child(2n+2)
+	margin -20px 0 0 16px
+	
+.heat-map__orientation_horizontal .heat-map__item-container:nth-child(1n+2)
+	margin-top - 20px
+
+.heat-map__orientation_vertical
+	display none
+	margin-top 40px
+
+	+smallScreen()
+		display flex
+
+.heat-map__orientation_vertical .heat-map__item-container
+	flex-direction column
+	position relative
+	margin-right -18px
+	width 51.5px
+	height 319px
+
+.heat-map__item-container
+	display flex
+	align-items flex-end
+
+.heat-map__wrapper-item
+	width 34px
+	height 34px
+	position absolute
+
+.heat-map__item
+	background-repeat no-repeat
+	background-size contain
+
+.heat-map-item__size_min
+	background-image var(--heat-map-item-min-size)
+	width 34px
+	height 34px
+
+.heat-map-item__size_mid
+	background-image var(--heat-map-item-mid-size)
+	width 34px
+	height 42px
+	margin-top -8px
+	
+.heat-map-item__size_max
+	background-image var(--heat-map-item-max-size)
+	width 34px
+	height 58px
+	margin-top -24px
+
+.heat-map-item__size_extra
+	background-image var(--heat-map-item-extra-size)
+	width 34px
+	height 74px
+	margin-top -40px
+	
+.legends
+	max-width 330px
+	height 38px
+	width 100%
+	display flex
+	flex-direction row
+	justify-content space-between
+	color var(--secondary-font-color)
+	margin-top 50px
+
+	&__item
+		width 60px
+		height 100%
+		display flex
+		flex-direction column
+		justify-content space-between
+
+	&__item_size
+		width 100%
+		height 12px
+		border-radius 2px
+
+	&__item_hours
+		font-size 16px
+
+	&__item_size_segment
+		display flex
+		flex-direction row
+		align-items center
+
+	&__item_size_segment > span
+		background-color var(--legends-segment-color)
+		box-shadow var(--legends-segment-box-shadow)
+
+	&__item_size_segment > span:nth-child(2)
+		width 52px
+		height 4px
+
+	&__item_size_segment > span:first-child,
+	&__item_size_segment > span:last-child
+		width 4px
+		height 12px
+		border-radius 6px
+
+	&__item_hours_segment:before
+		content '1 час'
+
+		+smallScreen()
+			content '2 часа'
+
+	&__item_size_min
+		background-image var(--color-min-stats)
+		box-shadow var(--box-shadow-min-stats)
+
+	&__item_size_mid
+		background-image var(--color-mid-stats)
+		box-shadow var(--box-shadow-mid-stats)
+
+	&__item_size_max
+		background-image var(--color-max-stats)
+		box-shadow var(--box-shadow-max-stats)
+
+	&__item_size_extra
+		background-image var(--color-extra-stats)
+		box-shadow var(--box-shadow-extra-stats)

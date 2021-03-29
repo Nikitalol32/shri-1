@@ -1,0 +1,43 @@
+.vote
+	display flex
+	align-items center
+	flex-direction column
+
+.voting
+	display flex
+	flex-direction row
+	justify-content center
+	flex-wrap wrap
+	max-width 579px
+	width 100%
+
+	+smallScreen()
+		height 650px
+
+.vote .people-card
+	height 165px
+
+.vote.people-card:hover
+	background var(--inactive-gradient)
+	box-shadow var(--inactive-box-shadow)
+
+.switch-button
+	background-image var(--button-image)
+	background-size contain
+	background-repeat no-repeat
+	width 85px
+	height @width
+	cursor pointer
+
+.switch-button__direction-up
+	transform rotate(180deg)
+
+.people-card6
+	order 7
+
+.people-card7
+.people-card8
+	display none
+	
+	+smallScreen()
+		display flex

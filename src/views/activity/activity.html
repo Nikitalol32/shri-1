@@ -1,0 +1,109 @@
+<script id="activity" type="text/template">
+	<div class="activity">
+		<header class="g-header">
+			<h1 class="g-title">{{=it.title}}</h1>
+			<h2 class="g-subtitle">{{=it.subtitle}}</h2>
+		</header>
+		<div class="heat-map heat-map__orientation_vertical">
+			<div class="heat-map__item-container heat-map__monday">
+				{{~ it.data.one.mon :value:i}}
+					<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+				{{~}}
+			</div>
+			<div class="heat-map__item-container heat-map__tuesday">
+				{{~ it.data.one.tue :value:i}}
+					<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+				{{~}}
+			</div>
+			<div class="heat-map__item-container heat-map__wednesday">
+				{{~ it.data.one.wed :value:i}}
+					<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+				{{~}}
+			</div>
+			<div class="heat-map__item-container heat-map__thursday">
+				{{~ it.data.one.thu :value:i}}
+					<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+				{{~}}
+			</div>
+			<div class="heat-map__item-container heat-map__friday">
+				{{~ it.data.one.fri :value:i}}
+					<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+				{{~}}
+			</div>
+			<div class="heat-map__item-container heat-map__saturday">
+				{{~ it.data.one.sat :value:i}}
+					<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+				{{~}}
+			</div>
+			<div class="heat-map__item-container heat-map__sunday">
+				{{~ it.data.one.sun :value:i}}
+					<div style="{{? i%2}}top:{{=i * 13}}px; left:18px; z-index:{{=i+1}};{{?? true}}top:{{=i * 13}}px; left:0px; z-index:{{=i+1}};{{?}}" class="heat-map__wrapper-item"><div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div></div>
+				{{~}}
+			</div>
+		</div>
+		<!-- горизонтальная ориентация-->
+		<div class="heat-map heat-map__orientation_horizontal">
+			<div class="heat-map__item-container heat-map__monday">
+				{{~ it.data.two.mon :value:i}}
+					<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+				{{~}}
+			</div>
+			<div class="heat-map__item-container heat-map__tuesday">
+				{{~ it.data.two.tue :value:i}}
+					<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+				{{~}}
+			</div>
+			<div class="heat-map__item-container heat-map__wednesday">
+				{{~ it.data.two.wed :value:i}}
+					<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+				{{~}}
+			</div>
+			<div class="heat-map__item-container heat-map__thursday">
+				{{~ it.data.two.thu :value:i}}
+					<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+				{{~}}
+			</div>
+			<div class="heat-map__item-container heat-map__friday">
+				{{~ it.data.two.fri :value:i}}
+					<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+				{{~}}
+			</div>
+			<div class="heat-map__item-container heat-map__saturday">
+				{{~ it.data.two.sat :value:i}}
+					<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+				{{~}}
+			</div>
+			<div class="heat-map__item-container heat-map__sunday">
+				{{~ it.data.two.sun :value:i}}
+					<div class="heat-map__item heat-map-item__size_{{=value.mod}}"></div>
+				{{~}}
+			</div>
+		</div>
+		<div class="legends">
+			<div class="legends__item">
+				<div class="legends__item_size legends__item_size_segment">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<span class="legends__item_hours legends__item_hours_segment"></span>
+			</div>
+			<div class="legends__item">
+				<div class="legends__item_size legends__item_size_min"></div>
+				<span class="legends__item_hours">0</span>
+			</div>
+			<div class="legends__item">
+				<div class="legends__item_size legends__item_size_mid"></div>
+				<span class="legends__item_hours">1 - 2</span>
+			</div>
+			<div class="legends__item">
+				<div class="legends__item_size legends__item_size_max"></div>
+				<span class="legends__item_hours">3 - 4</span>
+			</div>
+			<div class="legends__item">
+				<div class="legends__item_size legends__item_size_extra"></div>
+				<span class="legends__item_hours">5 - 6</span>
+			</div>
+		</div>
+	</div>
+</script>
