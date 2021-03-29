@@ -3,7 +3,7 @@
 'use strict';
 
 const
-	projectFolder = 'dist',
+	projectFolder = 'build',
 	sourceFolder = 'src';
 
 const path = {
